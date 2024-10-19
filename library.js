@@ -87,8 +87,7 @@ const addTrackToPlaylist = function(trackId, playlistId) {
    }
 };
 
-addTrackToPlaylist("t03", "p01");
-console.log(library.playlists.p01.tracks);
+
 // generates a unique id
 // (already implemented: use this for addTrack and addPlaylist)
 const generateUid = function() {
@@ -98,13 +97,20 @@ const generateUid = function() {
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
+  let identity = generateUid();
+  Object.assign(library.tracks, {identity:  {id: `${identity}`, "name": name, "artist": artist, "album": album}});
+  console.log(library);
+};
 
-}
 
+
+//addTrack("Two out of Three Ain't bad", "Meatloaf", "Bat Out of Hell")
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
-
+  let identity = generateUid();
+  Object.assign(library.playlists, {identity: {id: `${identity}`, "name": name, "tracks": []}});
+  console.log(library);
 }
 
 
