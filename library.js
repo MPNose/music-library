@@ -75,10 +75,20 @@ const printPlaylist = function(playlistId) {
 
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
+   let track = Object.keys(library.tracks);
+   for (let i of track) {
+     if (i === trackId) {
+       for (let p in library.playlists) {
+         if (p === playlistId) {
+           library.playlists[p].tracks.push(i);      
+              }
+         }
+       }
+   }
+};
 
-}
-
-
+addTrackToPlaylist("t03", "p01");
+console.log(library.playlists.p01.tracks);
 // generates a unique id
 // (already implemented: use this for addTrack and addPlaylist)
 const generateUid = function() {
